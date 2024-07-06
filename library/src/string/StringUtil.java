@@ -51,4 +51,35 @@ public class StringUtil
         }
         return new String(charArray);
     }
+
+    public static boolean hasUniqueAsciiCharacters(String input)
+    {
+        return hasUniqueAsciiCharacters(input, false);
+    }
+
+    public static boolean hasUniqueAsciiCharacters(String input, boolean isExtendedAscii)
+    {
+        if(input == null)
+        {
+            throw new IllegalArgumentException(INPUT_STR_CANNOT_BE_NULL);
+        }
+        boolean[] charSet;
+        if(isExtendedAscii)
+        {
+            charSet = new boolean[256];
+        }
+        else
+        {
+            charSet = new boolean[128];
+        }
+        for (char c : input.toCharArray())
+        {
+            if(charSet[c])
+            {
+                return false;
+            }
+            charSet[c] = true;
+        }
+        return true;
+    }
 }
