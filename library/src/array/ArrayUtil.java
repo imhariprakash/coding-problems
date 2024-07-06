@@ -36,4 +36,21 @@ public class ArrayUtil
         array[sourceIndex] = array[destIndex];
         array[destIndex] = temp;
     }
+
+    public static <T> void printArray(T[] array)
+    {
+        printArray(array, 0, array.length - 1);
+    }
+
+    public static <T> void printArray(T[] array, int startIndex, int endIndex)
+    {
+        for (int i = 0; i < array.length; i++)
+        {
+            if (i >= startIndex && i <= endIndex)
+            {
+                System.out.print(array[i] + " ");
+            }
+        }
+        System.out.println();
+    }
 }
