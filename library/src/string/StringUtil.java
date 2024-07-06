@@ -82,4 +82,20 @@ public class StringUtil
         }
         return true;
     }
+
+    public static boolean isPalindrome(String input)
+    {
+        if(input == null)
+        {
+            throw new IllegalArgumentException(INPUT_STR_CANNOT_BE_NULL);
+        }
+        for(int i = 0; i < input.length(); i++)
+        {
+            if(input.charAt(i) != input.charAt(input.length() - 1 - i))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }
