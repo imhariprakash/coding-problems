@@ -2,7 +2,7 @@ package string;
 
 public class StringReverse
 {
-    public static void main()
+    public static void run()
     {
         reverseOnlyEvenIndicesInString();
     }

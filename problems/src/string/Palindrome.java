@@ -2,7 +2,7 @@ package string;
 
 public class Palindrome
 {
-    public static void main()
+    public static void run()
     {
         checkPalindrome();
     }

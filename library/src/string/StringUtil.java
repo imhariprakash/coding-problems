@@ -4,7 +4,6 @@ import array.ArrayUtil;
 
 import java.util.Arrays;
 
-import static array.ArrayUtil.printArray;
 import static error.ErrorMessages.INPUT_STR_CANNOT_BE_NULL;
 
 public class StringUtil
@@ -16,10 +15,7 @@ public class StringUtil
             throw new IllegalArgumentException(INPUT_STR_CANNOT_BE_NULL);
         }
         char[] charArray = input.toCharArray();
-        for (int i = 0; i < charArray.length / 2; i++)
-        {
-            ArrayUtil.swap(charArray, i, charArray.length - 1 - i);
-        }
+        ArrayUtil.reverseArray(charArray);
         return new String(charArray);
     }
 
@@ -39,54 +35,27 @@ public class StringUtil
         {
             throw new IllegalArgumentException(INPUT_STR_CANNOT_BE_NULL);
         }
-        int remainder = 0; // Default even
-        if(isOdd)
-        {
-            remainder = 1;
-        }
         char[] charArray = input.toCharArray();
-        for (int i = 0; i < charArray.length / 2; i++)
-        {
-            if(i % 2 == remainder)
-            {
-                ArrayUtil.swap(charArray, i, charArray.length - 1 - i);
-            }
-        }
+        ArrayUtil.reverseOddOrEvenIndices(charArray, isOdd);
         return new String(charArray);
     }
 
-    public static boolean hasUniqueAsciiCharacters(String input)
+    public static boolean hasUniqueAsciiCharactersUsingArray(String input)
     {
-        return hasUniqueAsciiCharacters(input, false);
+        return hasUniqueAsciiCharactersUsingArray(input, false);
     }
 
-    public static boolean hasUniqueAsciiCharacters(String input, boolean isExtendedAscii)
+    public static boolean hasUniqueAsciiCharactersUsingArray(String input, boolean isExtendedAscii) throws IllegalArgumentException
     {
         if(input == null)
         {
             throw new IllegalArgumentException(INPUT_STR_CANNOT_BE_NULL);
         }
-        boolean[] charSet;
-        if(isExtendedAscii)
-        {
-            charSet = new boolean[256];
-        }
-        else
-        {
-            charSet = new boolean[128];
-        }
-        for (char c : input.toCharArray())
-        {
-            if(charSet[c])
-            {
-                return false;
-            }
-            charSet[c] = true;
-        }
-        return true;
+
+        return ArrayUtil.hasUniqueAsciiCharacters(input.toCharArray(), isExtendedAscii);
     }
 
-    public static boolean isPalindrome(String input)
+    public static boolean isPalindrome(String input) throws IllegalArgumentException
     {
         if(input == null)
         {
@@ -121,36 +90,7 @@ public class StringUtil
         int[] version2Parts = Arrays.stream(version2.split("\\."))
                 .map(String::trim)
                 .mapToInt(Integer::parseInt).toArray();
-        int idx = 0;
-        while(idx < version1Parts.length || idx < version2Parts.length)
-        {
-            if(idx < version1Parts.length && idx < version2Parts.length)
-            {
-                if(version1Parts[idx] > version2Parts[idx])
-                {
-                    return 1;
-                }
-                else if(version1Parts[idx] < version2Parts[idx])
-                {
-                    return -1;
-                }
-            }
-            else if(idx < version1Parts.length)
-            {
-                if(version1Parts[idx] != 0)
-                {
-                    return 1;
-                }
-            }
-            else
-            {
-                if(version2Parts[idx]!= 0)
-                {
-                    return -1;
-                }
-            }
-            idx++;
-        }
-        return 0;
+
+        return ArrayUtil.isTheSameVersion(version1Parts, version2Parts);
     }
 }

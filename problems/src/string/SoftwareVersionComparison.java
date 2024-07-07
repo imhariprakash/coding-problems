@@ -4,7 +4,7 @@ import static string.StringUtil.isTheSameVersion;
 
 public class SoftwareVersionComparison
 {
-    public static void main()
+    public static void run()
     {
         compareVersions();
     }
