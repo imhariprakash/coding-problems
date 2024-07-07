@@ -1,13 +1,10 @@
-import string.Palindrome;
-import string.SoftwareVersionComparison;
-import string.StringReverse;
-import string.UniqueCharInString;
+import string.*;
 
 public class Main
 {
     public static void main(String[] args)
     {
         // This method calls the problem's main method
-        UniqueCharInString.run();
+        RemoveDuplicateCharacters.run();
     }
 }

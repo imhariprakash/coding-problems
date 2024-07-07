@@ -93,4 +93,29 @@ public class StringUtil
 
         return ArrayUtil.isTheSameVersion(version1Parts, version2Parts);
     }
+
+    public static String getUniqueCharacters(String input, boolean isOrderRequired, boolean isSortingRequired)
+    {
+        if(input == null)
+        {
+            throw new IllegalArgumentException(INPUT_STR_CANNOT_BE_NULL);
+        }
+        char[] charArray = input.toCharArray();
+        return ArrayUtil.getUniqueCharacters(charArray, isOrderRequired, isSortingRequired).toString();
+    }
+
+    public static String removeDuplicates(String input)
+    {
+        return getUniqueCharacters(input, false, false);
+    }
+
+    public static String removeDuplicates(String input, boolean isOrderRequired)
+    {
+        return getUniqueCharacters(input, isOrderRequired, false);
+    }
+
+    public static String removeDuplicatesAndSort(String input, boolean isOrderRequired, boolean isSortingRequired)
+    {
+        return getUniqueCharacters(input, isOrderRequired, isSortingRequired);
+    }
 }

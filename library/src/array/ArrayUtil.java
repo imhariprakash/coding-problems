@@ -1,5 +1,7 @@
 package array;
 
+import java.util.*;
+
 import static error.ErrorMessages.INVALID_ARRAY_OR_INDICES;
 
 public class ArrayUtil
@@ -134,5 +136,30 @@ public class ArrayUtil
             idx++;
         }
         return 0;
+    }
+
+    public static ArrayList getUniqueCharacters(char[] charArray, boolean isOrderRequired, boolean isSortingRequired)
+    {
+        Set<Character> uniqueCharacterSet;
+        if(isOrderRequired)
+        {
+            uniqueCharacterSet = new LinkedHashSet<>();
+        }
+        else
+        {
+            uniqueCharacterSet = new HashSet<>();
+        }
+
+        for (char c : charArray)
+        {
+            uniqueCharacterSet.add(c);
+        }
+
+        ArrayList<Character> uniqueCharacterArray = new ArrayList<>(uniqueCharacterSet);
+        if(isSortingRequired)
+        {
+            Collections.sort(uniqueCharacterArray);
+        }
+        return uniqueCharacterArray;
     }
 }
