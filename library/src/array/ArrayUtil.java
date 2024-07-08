@@ -1,5 +1,6 @@
 package array;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 import static error.ErrorMessages.INVALID_ARRAY_OR_INDICES;
@@ -37,23 +38,6 @@ public class ArrayUtil
         T temp = array[sourceIndex];
         array[sourceIndex] = array[destIndex];
         array[destIndex] = temp;
-    }
-
-    public static <T> void printArray(T[] array)
-    {
-        printArray(array, 0, array.length - 1);
-    }
-
-    public static <T> void printArray(T[] array, int startIndex, int endIndex)
-    {
-        for (int i = 0; i < array.length; i++)
-        {
-            if (i >= startIndex && i <= endIndex)
-            {
-                System.out.print(array[i] + " ");
-            }
-        }
-        System.out.println();
     }
 
     public static void reverseArray(char[] charArray)
@@ -161,5 +145,84 @@ public class ArrayUtil
             Collections.sort(uniqueCharacterArray);
         }
         return uniqueCharacterArray;
+    }
+
+    public static void printArray(Object array)
+    {
+        printArray(array, 0);
+    }
+
+    public static void printArray(Object array, int level, boolean isFirstMember)
+    {
+        if(array.getClass().isArray())
+        {
+            printIndentation(level);
+            System.out.println("[");
+            for (int i = 0; i < Array.getLength(array); i++)
+            {
+                Object subArray = Array.get(array, i);
+                printArray(subArray, level + 1, i == 0);
+            }
+            System.out.println();
+            printIndentation(level);
+            System.out.println("]");
+        }
+        else
+        {
+            if(isFirstMember)
+            {
+                printIndentation(level);
+            }
+            System.out.print(array + " ");
+        }
+    }
+
+    public static void printArray(Object array, int level)
+    {
+        if(array.getClass().isArray() && Array.getLength(array) > 0)
+        {
+            for(int i = 0; i < Array.getLength(array); i++)
+            {
+                Object subArray = Array.get(array, i);
+                if (subArray.getClass().isArray())
+                {
+                    printArray(subArray, level + 1);
+                }
+                else
+                {
+                    printIndentation(level);
+                    print1dArray(array);
+                }
+            }
+        }
+        else
+        {
+            printIndentation(level);
+            System.out.println(array);
+        }
+    }
+
+    public static void print1dArray(Object array)
+    {
+        System.out.print("[");
+        for (int i = 0; i < Array.getLength(array); i++)
+        {
+            System.out.print(Array.get(array, i) + " ");
+        }
+        System.out.println("]");
+    }
+
+    public static void printIndentation(int level)
+    {
+        printIndentation(level, 4); // Default Indentation
+    }
+
+    public static void printIndentation(int level, int spaceCount)
+    {
+        String indentation = " ".repeat(spaceCount);
+        for(int i = 0; i < level; i++)
+        {
+            System.out.print(indentation);
+        }
     }
 }
