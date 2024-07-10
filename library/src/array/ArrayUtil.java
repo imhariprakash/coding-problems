@@ -3,6 +3,7 @@ package array;
 import java.lang.reflect.Array;
 import java.util.*;
 
+import static error.ErrorMessages.INVALID_ARRAY;
 import static error.ErrorMessages.INVALID_ARRAY_OR_INDICES;
 
 public class ArrayUtil
@@ -147,69 +148,73 @@ public class ArrayUtil
         return uniqueCharacterArray;
     }
 
+    public static void printArrayInSingleLine(Object array)
+    {
+        if(array == null)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        printArrayInSingleLine(array, false, false);
+        System.out.println();
+    }
+
+    private static void printArrayInSingleLine(Object array, boolean isLastElement, boolean hasNextSubArray)
+    {
+        if(array.getClass().isArray())
+        {
+            System.out.print("[");
+            for (int i = 0; i < Array.getLength(array); i++)
+            {
+                Object subArray = Array.get(array, i);
+                isLastElement = (i == Array.getLength(array) - 1);
+                printArrayInSingleLine(subArray, isLastElement, (i < Array.getLength(array) - 1));
+            }
+            System.out.print("]");
+            if(hasNextSubArray)
+            {
+                System.out.print(", ");
+            }
+        }
+        else
+        {
+            System.out.print(array);
+            if(!isLastElement)
+            {
+                System.out.print(", ");
+            }
+        }
+    }
+
     public static void printArray(Object array)
     {
         printArray(array, 0);
     }
 
-    public static void printArray(Object array, int level, boolean isFirstMember)
+    public static void printArray(Object array, int level)
     {
         if(array.getClass().isArray())
         {
-            printIndentation(level);
-            System.out.println("[");
+            System.out.print("[");
             for (int i = 0; i < Array.getLength(array); i++)
             {
                 Object subArray = Array.get(array, i);
-                printArray(subArray, level + 1, i == 0);
+                isLastElement = (i == Array.getLength(array) - 1);
+                printArrayInSingleLine(subArray, isLastElement, (i < Array.getLength(array) - 1));
             }
-            System.out.println();
-            printIndentation(level);
-            System.out.println("]");
-        }
-        else
-        {
-            if(isFirstMember)
+            System.out.print("]");
+            if(hasNextElement)
             {
-                printIndentation(level);
-            }
-            System.out.print(array + " ");
-        }
-    }
-
-    public static void printArray(Object array, int level)
-    {
-        if(array.getClass().isArray() && Array.getLength(array) > 0)
-        {
-            for(int i = 0; i < Array.getLength(array); i++)
-            {
-                Object subArray = Array.get(array, i);
-                if (subArray.getClass().isArray())
-                {
-                    printArray(subArray, level + 1);
-                }
-                else
-                {
-                    printIndentation(level);
-                    print1dArray(array);
-                }
+                System.out.print(", ");
             }
         }
         else
         {
-            printIndentation(level);
-            System.out.println(array);
+            System.out.print(array);
+            if(!isLastElement)
+            {
+                System.out.print(", ");
+            }
         }
-    }
-
-    public static void print1dArray(Object array)
-    {
-        System.out.print("[");
-        for (int i = 0; i < Array.getLength(array); i++)
-        {
-            System.out.print(Array.get(array, i) + " ");
-        }
-        System.out.println("]");
     }
 
     public static void printIndentation(int level)
