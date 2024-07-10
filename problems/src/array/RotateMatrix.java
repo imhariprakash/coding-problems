@@ -6,7 +6,7 @@ public class RotateMatrix
 {
     public static void run()
     {
-        printArrayInSingleLine();
+        printArray();
     }
 
     public static void rotateMatrix()
@@ -37,7 +37,8 @@ public class RotateMatrix
         int number = 1;
         ArrayUtil.printArrayInSingleLine(number);
 
-        int[] emptyArray = new int[0];        ArrayUtil.printArrayInSingleLine(emptyArray);
+        int[] emptyArray = new int[0];
+        ArrayUtil.printArrayInSingleLine(emptyArray);
 
         try
         {
@@ -53,7 +54,7 @@ public class RotateMatrix
     {
         int[][][] matrix = {{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}}};
         ArrayUtil.printArray(matrix);
-        /*int[] array1D = {1, 2, 3, 4, 5};
+        int[] array1D = {1, 2, 3, 4, 5};
         ArrayUtil.printArray(array1D);
         int[][] array2D = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         ArrayUtil.printArray(array2D);
@@ -62,6 +63,21 @@ public class RotateMatrix
         int[][][][] array4D = {{{{1, 2}, {3, 4}}, {{5, 6}, {7, 8}}}, {{{9, 10}, {11, 12}}, {{13, 14}, {15, 16}}}};
         ArrayUtil.printArray(array4D);
         Object[] mixedArray = {new int[]{1, 2, 3}, new int[][]{{4, 5}, {6, 7}}, new int[][][]{{{8, 9}, {10, 11}}}};
-        ArrayUtil.printArray(mixedArray);*/
+        ArrayUtil.printArray(mixedArray);
+
+        int number = 1;
+        ArrayUtil.printArray(number);
+
+        int[] emptyArray = new int[0];
+        ArrayUtil.printArray(emptyArray);
+
+        try
+        {
+            ArrayUtil.printArray(null);
+        }
+        catch (IllegalArgumentException e)
+        {
+            System.out.println("Array cannot be null");
+        }
     }
 }

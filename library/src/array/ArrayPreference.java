@@ -2,11 +2,11 @@ package array;
 
 public class ArrayPreference
 {
-    private static final int DEFAULT_INDENTATION_LEVEL = 4;
-    private static final String DEFAULT_SUB_ARRAY_SEPARATOR = ", ";
-    private static final String DEFAULT_ELEMENT_SEPARATOR = ", ";
-    private static final String DEFAULT_ARRAY_OPENING_BRACE_STYLE = "[";
-    private static final String DEFAULT_ARRAY_CLOSING_BRACE_STYLE = "]";
+    public static final int DEFAULT_INDENTATION_LEVEL = 4;
+    public static final String DEFAULT_SUB_ARRAY_SEPARATOR = ", ";
+    public static final String DEFAULT_ELEMENT_SEPARATOR = ", ";
+    public static final String DEFAULT_ARRAY_OPENING_BRACE_STYLE = "[";
+    public static final String DEFAULT_ARRAY_CLOSING_BRACE_STYLE = "]";
     private int indentationLevel;
     private String subArraySeparator;
     private String elementSeparator;

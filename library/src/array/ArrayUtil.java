@@ -165,6 +165,10 @@ public class ArrayUtil
         {
             throw new IllegalArgumentException(INVALID_ARRAY);
         }
+        if(arrayPreference == null)
+        {
+            arrayPreference = new ArrayPreference();
+        }
         printArrayInSingleLine(array, arrayPreference, false, false);
         System.out.println();
     }
@@ -199,27 +203,48 @@ public class ArrayUtil
 
     public static void printArray(Object array)
     {
-        printArray(array, 0, false, false, false);
+        if(array == null)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        ArrayPreference arrayPreference = new ArrayPreference();
+        printArray(array, 0, arrayPreference, false, false, false);
+        System.out.println();
     }
 
-    public static void printArray(Object array, int level, boolean isFirstElement, boolean isLastElement, boolean hasNextSubArray)
+    public static void printArray(Object array, ArrayPreference arrayPreference)
+    {
+        if (array == null)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        if(arrayPreference == null)
+        {
+            arrayPreference = new ArrayPreference();
+        }
+        printArray(array, 0, arrayPreference, false, false, false);
+        System.out.println();
+    }
+
+    private static void printArray(Object array, int level, ArrayPreference arrayPreference, boolean isFirstElement, boolean isLastElement, boolean hasNextSubArray)
     {
         if(array.getClass().isArray())
         {
-            printIndentation(level);
-            System.out.println("[");
-            for (int i = 0; i < Array.getLength(array); i++)
+            printIndentation(level, arrayPreference);
+            System.out.println(arrayPreference.getArrayOpeningBraceStyle());
+            int arrayLength = Array.getLength(array);
+            for (int i = 0; i < arrayLength; i++)
             {
                 Object subArray = Array.get(array, i);
-                isLastElement = (i == Array.getLength(array) - 1);
+                isLastElement = (i == arrayLength - 1);
                 isFirstElement = i == 0;
-                printArray(subArray, level + 1, isFirstElement, isLastElement, (i < Array.getLength(array) - 1));
+                printArray(subArray, level + 1, arrayPreference, isFirstElement, isLastElement, (i < arrayLength - 1));
             }
-            printIndentation(level);
-            System.out.print("]");
+            printIndentation(level, arrayPreference);
+            System.out.print(arrayPreference.getArrayClosingBraceStyle());
             if(hasNextSubArray)
             {
-                System.out.print(", ");
+                System.out.print(arrayPreference.getSubArraySeparator());
             }
             System.out.println();
         }
@@ -227,7 +252,7 @@ public class ArrayUtil
         {
             if(isFirstElement)
             {
-                printIndentation(level);
+                printIndentation(level, arrayPreference);
             }
             System.out.print(array);
             if(isLastElement)
@@ -236,14 +261,19 @@ public class ArrayUtil
             }
             else
             {
-                System.out.print(", ");
+                System.out.print(arrayPreference.getElementSeparator());
             }
         }
     }
 
     public static void printIndentation(int level)
     {
-        printIndentation(level, 4); // Default Indentation
+        printIndentation(level, ArrayPreference.DEFAULT_INDENTATION_LEVEL); // Default Indentation
+    }
+
+    public static void printIndentation(int level, ArrayPreference arrayPreference)
+    {
+        printIndentation(level, arrayPreference.getIndentationLevel());
     }
 
     public static void printIndentation(int level, int spaceCount)
