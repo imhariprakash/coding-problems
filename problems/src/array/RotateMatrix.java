@@ -6,7 +6,7 @@ public class RotateMatrix
 {
     public static void run()
     {
-        printArrayInSingleLine();
+        printArray();
     }
 
     public static void rotateMatrix()
@@ -109,11 +109,5 @@ public class RotateMatrix
 
         Integer[][][][] fourDimArray = {{{{1, null}, {3, 4}}, {{null, 6}, {7, 8}}}, {{{null, 2}, {3, null}}, {{5, 6}, {null, 8}}}, {{{1, 2}, {null, 4}}, {{5, null}, {7, 8}}}};
         ArrayUtil.printArray(fourDimArray);
-    }
-
-    public static void printArrayT()
-    {
-        int[][][] matrix = {{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}}};
-        ArrayUtil.printArrayT(matrix);
     }
 }

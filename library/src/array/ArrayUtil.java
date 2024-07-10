@@ -267,38 +267,60 @@ public class ArrayUtil
         }
     }
 
-    public static void printArrayT(Object array)
+    public static void print1DArray(Object array, int level, ArrayPreference arrayPreference, boolean hasNextSubArray)
     {
-        if(array == null)
+        if(array != null)
         {
-            throw new IllegalArgumentException(INVALID_ARRAY);
+            int arrayLength = Array.getLength(array);
+            printIndentation(level);
+            System.out.println(arrayPreference.getArrayOpeningBraceStyle());
+            printIndentation(level + 1);
+            for (int i = 0; i < arrayLength; i++)
+            {
+                System.out.print(Array.get(array, i));
+                if(i != arrayLength - 1)
+                {
+                    System.out.print(arrayPreference.getElementSeparator());
+                }
+            }
+            System.out.println();
+            printIndentation(level);
+            System.out.print(arrayPreference.getArrayClosingBraceStyle());
+            if(hasNextSubArray)
+            {
+                System.out.println(arrayPreference.getSubArraySeparator());
+            }
+            else
+            {
+                System.out.println();
+            }
         }
-        ArrayPreference arrayPreference = new ArrayPreference();
-        printArrayT(array, DEFAULT_ARRAY_LEVEL, arrayPreference);
     }
 
-    public static void printArrayT(Object array, ArrayPreference arrayPreference)
+    public static void print1DArrayInSameLine(Object array, int level, ArrayPreference arrayPreference, boolean hasNextSubArray)
     {
-        if(array == null)
+        if(array != null)
         {
-            throw new IllegalArgumentException(INVALID_ARRAY);
-        }
-        if(arrayPreference == null)
-        {
-            arrayPreference = new ArrayPreference();
-        }
-        printArrayT(array, DEFAULT_ARRAY_LEVEL, arrayPreference);
-    }
-
-    public static void printArrayT(Object array, int level, ArrayPreference arrayPreference)
-    {
-        if(array.getClass().isArray())
-        {
-            Object subArray = Array.get(array, 0);
-        }
-        else
-        {
-            System.out.print(array);
+            int arrayLength = Array.getLength(array);
+            printIndentation(level);
+            System.out.print(arrayPreference.getArrayOpeningBraceStyle());
+            for (int i = 0; i < arrayLength; i++)
+            {
+                System.out.print(Array.get(array, i));
+                if(i != arrayLength - 1)
+                {
+                    System.out.print(arrayPreference.getElementSeparator());
+                }
+            }
+            System.out.print(arrayPreference.getArrayClosingBraceStyle());
+            if(hasNextSubArray)
+            {
+                System.out.println(arrayPreference.getSubArraySeparator());
+            }
+            else
+            {
+                System.out.println();
+            }
         }
     }
 
