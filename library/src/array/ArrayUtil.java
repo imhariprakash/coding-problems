@@ -154,25 +154,37 @@ public class ArrayUtil
         {
             throw new IllegalArgumentException(INVALID_ARRAY);
         }
-        printArrayInSingleLine(array, false, false);
+        ArrayPreference arrayPreference = new ArrayPreference();
+        printArrayInSingleLine(array, arrayPreference, false, false);
         System.out.println();
     }
 
-    private static void printArrayInSingleLine(Object array, boolean isLastElement, boolean hasNextSubArray)
+    public static void printArrayInSingleLine(Object array, ArrayPreference arrayPreference)
+    {
+        if(array == null)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        printArrayInSingleLine(array, arrayPreference, false, false);
+        System.out.println();
+    }
+
+    private static void printArrayInSingleLine(Object array, ArrayPreference arrayPreference, boolean isLastElement, boolean hasNextSubArray)
     {
         if(array.getClass().isArray())
         {
-            System.out.print("[");
-            for (int i = 0; i < Array.getLength(array); i++)
+            System.out.print(arrayPreference.getArrayOpeningBraceStyle());
+            int arrayLength = Array.getLength(array);
+            for (int i = 0; i < arrayLength; i++)
             {
                 Object subArray = Array.get(array, i);
-                isLastElement = (i == Array.getLength(array) - 1);
-                printArrayInSingleLine(subArray, isLastElement, (i < Array.getLength(array) - 1));
+                isLastElement = (i == arrayLength - 1);
+                printArrayInSingleLine(subArray, arrayPreference, isLastElement, (i < arrayLength - 1));
             }
-            System.out.print("]");
+            System.out.print(arrayPreference.getArrayClosingBraceStyle());
             if(hasNextSubArray)
             {
-                System.out.print(", ");
+                System.out.print(arrayPreference.getSubArraySeparator());
             }
         }
         else
@@ -180,37 +192,49 @@ public class ArrayUtil
             System.out.print(array);
             if(!isLastElement)
             {
-                System.out.print(", ");
+                System.out.print(arrayPreference.getElementSeparator());
             }
         }
     }
 
     public static void printArray(Object array)
     {
-        printArray(array, 0);
+        printArray(array, 0, false, false, false);
     }
 
-    public static void printArray(Object array, int level)
+    public static void printArray(Object array, int level, boolean isFirstElement, boolean isLastElement, boolean hasNextSubArray)
     {
         if(array.getClass().isArray())
         {
-            System.out.print("[");
+            printIndentation(level);
+            System.out.println("[");
             for (int i = 0; i < Array.getLength(array); i++)
             {
                 Object subArray = Array.get(array, i);
                 isLastElement = (i == Array.getLength(array) - 1);
-                printArrayInSingleLine(subArray, isLastElement, (i < Array.getLength(array) - 1));
+                isFirstElement = i == 0;
+                printArray(subArray, level + 1, isFirstElement, isLastElement, (i < Array.getLength(array) - 1));
             }
+            printIndentation(level);
             System.out.print("]");
-            if(hasNextElement)
+            if(hasNextSubArray)
             {
                 System.out.print(", ");
             }
+            System.out.println();
         }
         else
         {
+            if(isFirstElement)
+            {
+                printIndentation(level);
+            }
             System.out.print(array);
-            if(!isLastElement)
+            if(isLastElement)
+            {
+                System.out.println();
+            }
+            else
             {
                 System.out.print(", ");
             }
