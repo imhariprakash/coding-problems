@@ -6,7 +6,7 @@ public class RotateMatrix
 {
     public static void run()
     {
-        printArray();
+        printArrayInSingleLine();
     }
 
     public static void rotateMatrix()
@@ -48,6 +48,21 @@ public class RotateMatrix
         {
             System.out.println("Array cannot be null");
         }
+
+        Integer[] array = {null, null, null};
+        ArrayUtil.printArrayInSingleLine(array);
+
+        Integer[] oneDimArray = {1, null, 3, null, 5};
+        ArrayUtil.printArrayInSingleLine(oneDimArray);
+
+        Integer[][] twoDimArray = {{1, 2, null}, {null, 5, 6}, {7, 8, 9}};
+        ArrayUtil.printArrayInSingleLine(twoDimArray);
+
+        Integer[][][] threeDimArray = {{{1, 2, 3}, {null, 5, 6}, {7, null, 9}}, {{null, 2, 3}, {4, 5, null}, {7, 8, 9}}, {{1, null, 3}, {4, 5, 6}, {null, 8, 9}}};
+        ArrayUtil.printArrayInSingleLine(threeDimArray);
+
+        Integer[][][][] fourDimArray = {{{{1, null}, {3, 4}}, {{null, 6}, {7, 8}}}, {{{null, 2}, {3, null}}, {{5, 6}, {null, 8}}}, {{{1, 2}, {null, 4}}, {{5, null}, {7, 8}}}};
+        ArrayUtil.printArrayInSingleLine(fourDimArray);
     }
 
     public static void printArray()
@@ -79,5 +94,26 @@ public class RotateMatrix
         {
             System.out.println("Array cannot be null");
         }
+
+        Integer[] array = {null, null, null};
+        ArrayUtil.printArray(array);
+
+        Integer[] oneDimArray = {1, null, 3, null, 5};
+        ArrayUtil.printArray(oneDimArray);
+
+        Integer[][] twoDimArray = {{1, 2, null}, {null, 5, 6}, {7, 8, 9}};
+        ArrayUtil.printArray(twoDimArray);
+
+        Integer[][][] threeDimArray = {{{1, 2, 3}, {null, 5, 6}, {7, null, 9}}, {{null, 2, 3}, {4, 5, null}, {7, 8, 9}}, {{1, null, 3}, {4, 5, 6}, {null, 8, 9}}};
+        ArrayUtil.printArray(threeDimArray);
+
+        Integer[][][][] fourDimArray = {{{{1, null}, {3, 4}}, {{null, 6}, {7, 8}}}, {{{null, 2}, {3, null}}, {{5, 6}, {null, 8}}}, {{{1, 2}, {null, 4}}, {{5, null}, {7, 8}}}};
+        ArrayUtil.printArray(fourDimArray);
+    }
+
+    public static void printArrayT()
+    {
+        int[][][] matrix = {{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}},{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}, {21,22,23,24,25}}};
+        ArrayUtil.printArrayT(matrix);
     }
 }

@@ -3,6 +3,7 @@ package array;
 import java.lang.reflect.Array;
 import java.util.*;
 
+import static array.ArrayPreference.DEFAULT_ARRAY_LEVEL;
 import static error.ErrorMessages.INVALID_ARRAY;
 import static error.ErrorMessages.INVALID_ARRAY_OR_INDICES;
 
@@ -175,7 +176,7 @@ public class ArrayUtil
 
     private static void printArrayInSingleLine(Object array, ArrayPreference arrayPreference, boolean isLastElement, boolean hasNextSubArray)
     {
-        if(array.getClass().isArray())
+        if(array != null && array.getClass().isArray())
         {
             System.out.print(arrayPreference.getArrayOpeningBraceStyle());
             int arrayLength = Array.getLength(array);
@@ -208,7 +209,7 @@ public class ArrayUtil
             throw new IllegalArgumentException(INVALID_ARRAY);
         }
         ArrayPreference arrayPreference = new ArrayPreference();
-        printArray(array, 0, arrayPreference, false, false, false);
+        printArray(array, DEFAULT_ARRAY_LEVEL, arrayPreference, false, false, false);
         System.out.println();
     }
 
@@ -222,13 +223,13 @@ public class ArrayUtil
         {
             arrayPreference = new ArrayPreference();
         }
-        printArray(array, 0, arrayPreference, false, false, false);
+        printArray(array, DEFAULT_ARRAY_LEVEL, arrayPreference, false, false, false);
         System.out.println();
     }
 
     private static void printArray(Object array, int level, ArrayPreference arrayPreference, boolean isFirstElement, boolean isLastElement, boolean hasNextSubArray)
     {
-        if(array.getClass().isArray())
+        if(array != null && array.getClass().isArray())
         {
             printIndentation(level, arrayPreference);
             System.out.println(arrayPreference.getArrayOpeningBraceStyle());
@@ -263,6 +264,41 @@ public class ArrayUtil
             {
                 System.out.print(arrayPreference.getElementSeparator());
             }
+        }
+    }
+
+    public static void printArrayT(Object array)
+    {
+        if(array == null)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        ArrayPreference arrayPreference = new ArrayPreference();
+        printArrayT(array, DEFAULT_ARRAY_LEVEL, arrayPreference);
+    }
+
+    public static void printArrayT(Object array, ArrayPreference arrayPreference)
+    {
+        if(array == null)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        if(arrayPreference == null)
+        {
+            arrayPreference = new ArrayPreference();
+        }
+        printArrayT(array, DEFAULT_ARRAY_LEVEL, arrayPreference);
+    }
+
+    public static void printArrayT(Object array, int level, ArrayPreference arrayPreference)
+    {
+        if(array.getClass().isArray())
+        {
+            Object subArray = Array.get(array, 0);
+        }
+        else
+        {
+            System.out.print(array);
         }
     }
 

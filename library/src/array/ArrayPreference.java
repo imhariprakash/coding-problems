@@ -7,6 +7,7 @@ public class ArrayPreference
     public static final String DEFAULT_ELEMENT_SEPARATOR = ", ";
     public static final String DEFAULT_ARRAY_OPENING_BRACE_STYLE = "[";
     public static final String DEFAULT_ARRAY_CLOSING_BRACE_STYLE = "]";
+    public static final int DEFAULT_ARRAY_LEVEL = 0;
     private int indentationLevel;
     private String subArraySeparator;
     private String elementSeparator;
