@@ -1,0 +1,30 @@
+1) Reverse a String:
+    A) Use extra array - loop from backwards - copy
+    B) Recursion:
+        * base condition: start < end (return when this fails)
+        * reverse(arr, 0, 5) : swap 0, 5
+            * reverse(arr, 1, 4) : swap 1, 4
+                * reverse(arr, 2, 3) : swap 2, 3
+                    * reverse(arr, 3, 2) :return
+    c) stack and pop
+    D) Loop, reverse opposite indices
+    * Efficient: Loop and swap opposite indices: arr[i] <> arr[n-1-i]
+
+2) String has unique characters:
+    A) Brute force: Use two loops - duplicate return false : O(N^2), In place
+    B) sort: Then compare arr[i] == arr[i + 1]: Best sort O(N*Log(N)) + O(N/2) = O(N*log(N))
+    C) Use array (extra space): O(N): time, space: 256
+    D) Using bit manipulation: (only a-z): O(N), extra space: Int(4 bytes)
+        * int: 32 bits, 1 << index : 00000001 < 1 gives 00000010 (left shift the digit by 1)
+            * first time set the bit
+                * 00000000 | 00001000 = 00001000
+            * next time whether the bit already set
+                * 00001000 & 00001000 = true (return false)
+        * set operation
+            checker = checker | 1 << index
+        * check whether already set
+            checker & 1 << index : true means duplicate return false
+    * Efficient:
+        * Use array, not in place but can trade space for speed
+
+3) 
