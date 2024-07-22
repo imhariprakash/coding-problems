@@ -1,0 +1,45 @@
+1) Reverse a String:
+    * 0 < i < N/2 : swap arr[i] and arr[n - 1 - i]
+
+2) Reverse only odd indices:
+    * Use modulo operator
+    * Hello -> Hlleo (replace i = 1 and i = 3) alone
+    * Time complexity:
+        * text.toCharArray() -> O(N)
+        * length of array -> O(1) : object - stored in a variable
+        * loop: O(N)
+        * Overall : O(N) + O(1) + O(N) = O(N)
+
+3) String has unique characters:
+    * Assumption Ascii - 128 characters, extended: 256 characters
+    * boolean[] asciiChar - false by default
+    * If already the index has 1, means duplicate - return false
+
+4) Palindrome:
+    * compare opposite index
+    * compare arr[i] and arr[n - 1 - i]
+
+5) Compare software versions:
+    * case: Look for 15 / 15.0/ 15.0.0 : Both same
+    * while i < version1.length || i < version2.length
+        * case 1: Both versions have that part - compare
+            * same: continue looking
+            * version1 > version2 : return 1
+            * version1 < version2 : return -1
+        * case 2: version 1 has that index
+            * if the value is not zero: version1 is greater: return 1
+            * if 0: continue looking
+        * case 3: version 2 has that index
+            * if the value is not zero: version2 is greater: return -1
+            * if 0: continue looking
+    * when the loop exits (fails) - not returned yet: means they are the same - return 0
+
+6) Remove duplicates from a list:
+    * set - no duplicate elements
+    * problem: (Hashing: O(1))
+        * HashSet: won't retain order
+        * LinkedHashSet: with double pointers - retain order (memory)
+
+7) Rotate a matrix: By 90, 180, 270, 360 (Square matrix): Any dimension
+    * N dimension means matrix of matrices - Recursively rotate the matrices and its submatrices
+    * problem at hand: Rotate a matrix

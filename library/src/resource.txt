@@ -1,0 +1,25 @@
+Data structure:
+    * How data is organized, stored, data can be retrieved and how fast the program runs
+    * Algorithm: set of instructions to solve a problem - many ways : 1 task
+    * Abstract data type (ADT): set of data, operations, behaviour defined - Implementation unknown
+    * Usable algorithm
+        * Define the problem
+        * Identify the elements
+        * propose the algorithm, run for test cases : Use ADT
+        * Fast enough? Space constraint satisfied? can optimize - Improve!
+
+clean code:
+    * Easy to develop - other than developer
+    * Meaningful, intention revealing, purposeful names
+    * eg: ingredients[i] = ingredient instead of e2fResult[i] = x
+    * Test driven: write test, run test, implement code and refactor
+
+Array:
+    * Fixed number of elements : continuous memory location
+    * Index (int[] array): 1d, 2d, 3d,...
+    * Dynamic array: List
+
+String:
+    * Immutable, new object created and reassigned
+    * name = "Hari" or name = new String("Hari")
+    * Mutable string: StringBuilder
