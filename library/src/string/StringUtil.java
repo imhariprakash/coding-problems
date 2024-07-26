@@ -71,6 +71,26 @@ public class StringUtil
         return true;
     }
 
+    public static boolean isPalindromeUsingTwoPointers(String input) throws IllegalArgumentException
+    {
+        if(input == null)
+        {
+            throw new IllegalArgumentException(INPUT_STR_CANNOT_BE_NULL);
+        }
+        int forwardPointer = 0;
+        int reversePointer = input.length() - 1;
+        while (reversePointer > forwardPointer)
+        {
+            if(input.charAt(forwardPointer) != input.charAt(reversePointer))
+            {
+                return false;
+            }
+            forwardPointer++;
+            reversePointer--;
+        }
+        return true;
+    }
+
     public static int isTheSameVersion(String version1, String version2)
     {
         //10.2.1 : major, minor, patch (bugfix, patch : increase patch version number

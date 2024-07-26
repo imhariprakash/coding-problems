@@ -27,4 +27,26 @@
     * Efficient:
         * Use array, not in place but can trade space for speed
 
-3) 
+3) Palindrome:
+    A) Loop - Reverse the string and compare : O(N) time and space complexity
+    B) Two pointer (one from start and other from end) - check equal : O(N/2) time and O(1) space complexity
+    C) Recursion : O(N/2) time, space: O(N/2): each recursive call creates a stack, each stack has end, start, String variables
+        base: end > start
+    D) loop: compare index and its opposite : O(N/2) time and O(1) space complexity (i variable)
+
+4) Software version:
+    A) Direct
+    B) Recursion
+
+5) Remove duplicates from an array:
+    A) Use extra array, sort: if array[i] != array[i + 1] then insert, else skip
+        * only inserted once in this way
+        * N*O(log N) + O(N) = N*O(log N) time and O(N) : extra array - space complexity
+    B) constant space:
+        * [1,2,3,4,4,4,5,3,4,5,6,7,7,8,7,9] -> [1,2,3,4,5,6,7,8,9,5,6,7,7,8,7,9]
+        * return j (our case: 8) -> Up to index 8 unique elements : Use up to that index
+        * O(N) : time complexity, O(1) : space complexity
+    C) Using linked hash set : has extra pointers to maintain order
+    D) Using Hash set : won't maintain order
+
+5)
