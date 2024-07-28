@@ -42,6 +42,32 @@ public class ArrayUtil
         array[destIndex] = temp;
     }
 
+    public static void swap(int[][] array, int sourceRowIndex, int sourceColumnIndex, int destRowIndex, int destColumnIndex)
+    {
+        boolean areAnyIndicesLessThanZero = sourceRowIndex < 0 || sourceColumnIndex < 0 || destRowIndex < 0 || destColumnIndex < 0;
+        boolean areAnyIndicesGreaterThanArrayLength = sourceRowIndex >= array.length || sourceColumnIndex >= array.length || destRowIndex >= array.length || destColumnIndex >= array.length;
+        if (array == null || areAnyIndicesLessThanZero || areAnyIndicesGreaterThanArrayLength)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY_OR_INDICES);
+        }
+        int temp = array[sourceRowIndex][sourceColumnIndex];
+        array[sourceRowIndex][sourceColumnIndex] = array[destRowIndex][destColumnIndex];
+        array[destRowIndex][destColumnIndex] = temp;
+    }
+
+    public static <T> void swap(T[][] array, int sourceRowIndex, int sourceColumnIndex, int destRowIndex, int destColumnIndex)
+    {
+        boolean areAnyIndicesLessThanZero = sourceRowIndex < 0 || sourceColumnIndex < 0 || destRowIndex < 0 || destColumnIndex < 0;
+        boolean areAnyIndicesGreaterThanArrayLength = sourceRowIndex >= array.length || sourceColumnIndex >= array.length || destRowIndex >= array.length || destColumnIndex >= array.length;
+        if (array == null || areAnyIndicesLessThanZero || areAnyIndicesGreaterThanArrayLength)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY_OR_INDICES);
+        }
+        T temp = array[sourceRowIndex][sourceColumnIndex];
+        array[sourceRowIndex][sourceColumnIndex] = array[destRowIndex][destColumnIndex];
+        array[destRowIndex][destColumnIndex] = temp;
+    }
+
     public static void reverseArray(char[] charArray)
     {
         for (int i = 0; i < charArray.length / 2; i++)
@@ -340,6 +366,36 @@ public class ArrayUtil
         for(int i = 0; i < level; i++)
         {
             System.out.print(indentation);
+        }
+    }
+
+    public static void transposeSquareMatrix(int[][] array)
+    {
+        if(array == null || array.length == 0 || array[0].length == 0)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        for(int i = 0; i < array.length; i++)
+        {
+            for(int j = i; j < array[i].length; j++)
+            {
+                swap(array, i, j, j, i);
+            }
+        }
+    }
+
+    public static <T> void transposeSquareMatrix(T[][] array)
+    {
+        if(array == null || array.length == 0 || array[0].length == 0)
+        {
+            throw new IllegalArgumentException(INVALID_ARRAY);
+        }
+        for(int i = 0; i < array.length; i++)
+        {
+            for(int j = 0; j < array[i].length; j++)
+            {
+                swap(array, i, j, j, i);
+            }
         }
     }
 }

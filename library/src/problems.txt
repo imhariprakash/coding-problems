@@ -43,3 +43,18 @@
 7) Rotate a matrix: By 90, 180, 270, 360 (Square matrix): Any dimension
     * N dimension means matrix of matrices - Recursively rotate the matrices and its submatrices
     * problem at hand: Rotate a matrix
+
+8) Print any dimensional array
+    * Recursion - Intuitive approach - easy and efficient
+        * indentation
+        * opening and closing brackets
+        * comma between two sub-array - last one should not have a comma
+        * comma between two elements - last one should not have a comma
+        * Used
+            * isFirstElement : while printing elements : first element alone should have the indentation
+            * isLastElement : last element alone should have the next line, no comma
+            * hasNextSubArray : last sub array should not have comma
+
+9) Transpose a matrix :
+    * swap - In place : Square matrix
+    * Rectangular: Must use another matrix - not in place

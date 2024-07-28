@@ -14,6 +14,10 @@ clean code:
     * eg: ingredients[i] = ingredient instead of e2fResult[i] = x
     * Test driven: write test, run test, implement code and refactor
 
+To know:
+    * int[], int[][], int[][][] : all are objects but int is not an object (primitive)
+    * T[][] : can't take int[][] as input - use Integer[][] : primitive class wrapper
+
 Array:
     * Fixed number of elements : continuous memory location
     * Index (int[] array): 1d, 2d, 3d,...

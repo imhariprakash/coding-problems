@@ -49,4 +49,10 @@
     C) Using linked hash set : has extra pointers to maintain order
     D) Using Hash set : won't maintain order
 
-5)
+5) Print any dimensional array
+    A) Recursion - Intuitive approach - easy and efficient
+    B) Loop - Anything done using recursion can also be done using loop - hard and not understandable
+
+6) Transpose a square matrix
+    A) In place - swap : must be a square matrix
+    B) Use extra matrix - not in place - works for rectangular matrix
